@@ -62,14 +62,12 @@ class FlutterLocalStorageInspector {
 				<title>Flutter local storage inspector</title>
 			</head>
 			<body>
-			<div class="tab">
-			<button class="tablinks" id="x">x</button>
-			<button class="tablinks" id="y">y</button>
-			<button class="tablinks" id="z">z</button>
-			</div>
-			
-			<h1>tab: ${this.tab}</h1>
 
+			<label>Device ip:<input id="ip"></label>
+			<label>Port:<input id="port"></label>
+
+			<div class="play" id="play"></div>
+			
 			<h1 id="lines-of-code-counter">0</h1>
 
 			<script nonce="${nonce}" src="${scriptUri}"></script>
