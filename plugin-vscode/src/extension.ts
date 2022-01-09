@@ -48,12 +48,13 @@ class FlutterLocalStorageInspector implements vscode.WebviewViewProvider {
 				case 'alert':
 					console.log(data.text);
 					break;
-				// case 'switch': {
-				// 	this.tab = data.text;
-				// 	console.log('switching to ' + this.tab);
-				// 	this._view?.show?.(true); // `show` is not implemented in 1.49 but is for 1.50 insiders
-				// 	break;
-				// }
+				case 'switch': {
+					this.tab = data.text;
+					console.log('switching to ' + this.tab);
+					webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
+					this._view?.show?.(true); // `show` is not implemented in 1.49 but is for 1.50 insiders
+					break;
+				}
 			}
 		});
 	}
@@ -83,9 +84,9 @@ class FlutterLocalStorageInspector implements vscode.WebviewViewProvider {
 			</head>
 			<body>
 			<div class="tab">
-			<button class="tablinks" onclick="switchTab('x')">x</button>
-			<button class="tablinks" onclick="switchTab('y')">y</button>
-			<button class="tablinks" onclick="switchTab('z')">z</button>
+			<button class="tablinks" id="x">x</button>
+			<button class="tablinks" id="y">y</button>
+			<button class="tablinks" id="z">z</button>
 			</div>
 			
 			<h1>tab: ${this.tab}</h1>

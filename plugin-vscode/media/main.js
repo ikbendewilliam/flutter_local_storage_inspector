@@ -17,6 +17,23 @@
         vscode.setState({ count: currentCount });
     }, 100);
 
+    document.querySelectorAll('.tablinks').forEach((element) => {
+        vscode.postMessage({
+            command: 'alert',
+            text: 'adding event for ' + element.id,
+        });
+        element.addEventListener('click', (event) => {
+            vscode.postMessage({
+                command: 'alert',
+                text: 'sending event for ' + element.id,
+            });
+            vscode.postMessage({
+                command: 'switch',
+                text: element.id,
+            });
+        });
+    });
+
     // window.addEventListener('message', event => {
     //     const message = event.data; // The json data that the extension sent
     //     switch (message.command) {
